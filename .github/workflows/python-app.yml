@@ -19,5 +19,6 @@ jobs:
     - name: Build and test Docker image
       run: |
         cd app
-        docker buildx build --platform linux/amd64 -t python312docker --push .
+        docker buildx build --platform linux/amd64 -t python312docker .
+        docker save python312docker | docker load
         docker run --rm python312docker poetry run pytest src tests
