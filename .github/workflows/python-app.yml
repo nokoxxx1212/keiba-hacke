@@ -29,8 +29,8 @@ jobs:
         file: app/Dockerfile
         platforms: linux/amd64
         push: false
-        tags: ${{ secrets.DOCKER_USERNAME }}/python312docker:latest
+        tags: nokodck/python312docker:latest
 
     - name: Run tests
       run: |
-        docker run --rm ${{ secrets.DOCKER_USERNAME }}/python312docker:latest poetry run pytest src tests
+        docker run --rm nokodck/python312docker:latest poetry run pytest src tests
