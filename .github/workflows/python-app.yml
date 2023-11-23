@@ -32,16 +32,10 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/python312docker:latest
 
     - name: Mount volumes
-      uses: docker/mount-volume-action@v1
+      uses: docker/compose-action@v1
       with:
-        source: app/src
-        target: /opt/mnt/src
-
-    - name: Mount test
-      uses: docker/mount-volume-action@v1
-      with:
-        source: app/test
-        target: /opt/mnt/test
+        command: run
+        options: -v app/src:/opt/mnt/src -v app/test:/opt/mnt/test
 
     - name: Run tests
       run: |
