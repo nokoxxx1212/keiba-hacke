@@ -23,8 +23,8 @@ jobs:
         file: app/Dockerfile
         platforms: linux/amd64
         push: false
-        tags: python312docker
+        tags: python312docker:latest
 
     - name: Run tests
       run: |
-        docker run --rm python312docker poetry run pytest src tests
+        docker run --rm python312docker:latest poetry run pytest src tests
