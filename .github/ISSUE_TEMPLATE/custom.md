@@ -7,17 +7,17 @@ assignees: ''
 
 ---
 
-# TO SCOPE THIS TICKET:
-
-[] XXX
-
 ## 🧑 Story
 
-XXX
+- 背景、やりたいこと
 
 ## 🔨 Acceptance Criteria
 
 - AC1
+
+## 📝 Task List
+
+- [] XXX
 
 ## 📚 Resources
 
