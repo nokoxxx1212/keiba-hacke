@@ -1,3 +1,7 @@
+import sys
+# 一個上の階層をpathに追加
+sys.path.append('../')
+
 import unittest
 
 from src.sample import is_prime
