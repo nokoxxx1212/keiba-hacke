@@ -36,6 +36,4 @@ jobs:
         pwd
         ls -la
         ls -la $(pwd)/app/src
-        docker run --rm -v $(pwd)/app/src:/opt/mnt/src -v $(pwd)/app/tests:/opt/mnt/tests ${{ secrets.DOCKER_USERNAME }}/python312docker:latest
-        docker exec -it ${{ secrets.DOCKER_USERNAME }}/python312docker:latest poetry run pytest /opt/mnt/src /opt/mnt/tests
-        #docker run --rm -v $(pwd)/app/src:/opt/mnt/src -v $(pwd)/app/tests:/opt/mnt/tests ${{ secrets.DOCKER_USERNAME }}/python312docker:latest poetry run pytest /opt/mnt/src /opt/mnt/tests
+        docker run --rm -v $(pwd)/app/src:/opt/mnt/src -v $(pwd)/app/tests:/opt/mnt/tests ${{ secrets.DOCKER_USERNAME }}/python312docker:latest poetry install & poetry run pytest /opt/mnt/src /opt/mnt/tests
