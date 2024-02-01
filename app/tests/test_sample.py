@@ -1,6 +1,6 @@
-import sys
-# 一個上の階層をpathに追加
-sys.path.append('../')
+#import sys
+## 一個上の階層をpathに追加
+#sys.path.append('../')
 
 import unittest
 
