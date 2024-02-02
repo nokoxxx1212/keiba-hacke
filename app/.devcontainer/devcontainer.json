@@ -1,5 +1,5 @@
 {
-    "name": "Python312docker",
+    "name": "khpythondocker",
     "dockerFile": "../Dockerfile",
     "extensions": [
         "ms-python.python",
