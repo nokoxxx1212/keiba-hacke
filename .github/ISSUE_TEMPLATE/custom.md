@@ -22,3 +22,7 @@ assignees: ''
 ## 📚 Resources
 
 - [PLANNINGDOC1](WWWDOTEXAMPLEDOTCOM)
+
+## 🎯 Deliverables
+
+## 🔜 Remaining Tasks
