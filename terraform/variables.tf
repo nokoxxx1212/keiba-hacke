@@ -62,11 +62,6 @@ variable "repository" {
   type        = string
 }
 
-variable "project" {
-  description = "The project of the Vertex AI Workbench instance."
-  type = string
-}
-
 variable "image_family" {
   description = "The image family of the Vertex AI Workbench instance."
   type        = string
