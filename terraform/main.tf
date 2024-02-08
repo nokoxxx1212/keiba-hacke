@@ -24,7 +24,6 @@ resource "google_notebooks_instance" "instance" {
 
   no_remove_data_disk = var.no_remove_data_disk
 
-  idle_shutdown_timeout = var.idle_shutdown_timeout
   no_public_ip = var.no_public_ip
   no_proxy_access = var.no_proxy_access
 }

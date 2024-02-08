@@ -6,6 +6,5 @@ boot_disk_size_gb = 100
 # project = "deeplearning-platform-release"
 image_family = "tf-latest-cpu"
 no_remove_data_disk = true
-idle_shutdown_timeout = 7200
 no_public_ip = false
 no_proxy_access = false

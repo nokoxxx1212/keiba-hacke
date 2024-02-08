@@ -72,11 +72,6 @@ variable "no_remove_data_disk" {
   type        = bool
 }
 
-variable "idle_shutdown_timeout" {
-  description = "The idle shutdown timeout of the Vertex AI Workbench instance."
-  type        = number
-}
-
 variable "no_public_ip" {
   description = "value of the Vertex AI Workbench instance."
   type        = bool
