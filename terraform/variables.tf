@@ -86,3 +86,8 @@ variable "no_proxy_access" {
   description = "Whether to allow proxy access to the Vertex AI Workbench instance."
   type        = bool
 }
+
+variable "instance_owners" {
+  description = "The owners of the Vertex AI Workbench instance."
+  type        = list(string)
+}

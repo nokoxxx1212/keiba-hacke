@@ -27,8 +27,5 @@ resource "google_notebooks_instance" "instance" {
   no_public_ip = var.no_public_ip
   no_proxy_access = var.no_proxy_access
 
-  access_config {
-    access_type = "SINGLE_USER"
-    runtime_owner = "user@example.com"
-  }
+  instance_owners = var.instance_owners
 }

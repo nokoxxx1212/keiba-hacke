@@ -8,5 +8,4 @@ image_family = "tf-latest-cpu"
 no_remove_data_disk = true
 no_public_ip = false
 no_proxy_access = false
-access_type = "SINGLE_USER"
-# runtime_owner = "user@example.com"
+# instance_owners = [ "my@service-account.com"]
