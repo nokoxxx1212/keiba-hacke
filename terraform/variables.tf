@@ -62,27 +62,22 @@ variable "repository" {
   type        = string
 }
 
-variable "image_family" {
-  description = "The image family of the Vertex AI Workbench instance."
-  type        = string
-}
-
-variable "no_remove_data_disk" {
-  description = "Whether to remove the data disk of the Vertex AI Workbench instance."
+variable "disable_public_ip" {
+  description = "Whether to disable public IP of the Vertex AI Workbench instance."
   type        = bool
 }
 
-variable "no_public_ip" {
-  description = "value of the Vertex AI Workbench instance."
-  type        = bool
-}
-
-variable "no_proxy_access" {
-  description = "Whether to allow proxy access to the Vertex AI Workbench instance."
+variable "disable_proxy_access" {
+  description = "Whether to disable proxy access of the Vertex AI Workbench instance."
   type        = bool
 }
 
 variable "instance_owners" {
   description = "The owners of the Vertex AI Workbench instance."
   type        = list(string)
+}
+
+variable "idle_timeout_seconds" {
+  description = "The idle timeout of the Vertex AI Workbench instance."
+  type        = number
 }
