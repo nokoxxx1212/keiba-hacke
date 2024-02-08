@@ -1,4 +1,4 @@
-name          = "dev-kh-wb-01"
+instance_name = "dev-kh-wb-01"
 location      = "us-central1-a"
 machine_type  = "n1-standard-1"
 boot_disk_type = "PD_SSD"

@@ -77,8 +77,8 @@ variable "idle_shutdown_timeout" {
   type        = number
 }
 
-variable "no_proxy_ip" {
-  description = "Whether to allow proxy IP access to the Vertex AI Workbench instance."
+variable "no_public_ip" {
+  description = "value of the Vertex AI Workbench instance."
   type        = bool
 }
 
