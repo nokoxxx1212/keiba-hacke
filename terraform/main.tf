@@ -17,9 +17,9 @@ resource "google_notebooks_instance" "instance" {
   boot_disk_type = var.boot_disk_type
   boot_disk_size_gb = var.boot_disk_size_gb
 
-  vm_image {
-    project = var.project
-    image_family = var.image_family
+  container_image {
+    repository = var.repository
+    tag = "latest"
   }
 
   no_remove_data_disk = var.no_remove_data_disk

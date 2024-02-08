@@ -57,6 +57,11 @@ variable "boot_disk_size_gb" {
   type        = number
 }
 
+variable "repository" {
+  description = "The repository of the Vertex AI Workbench instance."
+  type        = string
+}
+
 variable "project" {
   description = "The project of the Vertex AI Workbench instance."
   type = string
