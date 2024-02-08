@@ -1,1 +1,11 @@
-# Configure Terraform Cloud
+name          = "dev-kh-wb-01"
+location      = "us-central1-a"
+machine_type  = "n1-standard-1"
+boot_disk_type = "PD_SSD"
+boot_disk_size_gb = 100
+# project = "deeplearning-platform-release"
+image_family = "tf-latest-cpu"
+no_remove_data_disk = true
+idle_shutdown_timeout = 7200
+no_public_ip = false
+no_proxy_access = false
