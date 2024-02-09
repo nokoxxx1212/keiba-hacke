@@ -25,7 +25,7 @@ output "instance_state" {
   value       = google_workbench_instance.instance.state
 } 
 
-output "vm_image" {
-  description = "The image of the Vertex AI Workbench instance."
-  value       = google_workbench_instance.instance.upgrade_history[0].vm_image
+output "upgrede_history" {
+  description = "The upgrade history of the Vertex AI Workbench instance."
+  value       = google_workbench_instance.instance.upgrade_history
 }
