@@ -40,17 +40,12 @@ output "instance_location" {
   value       = google_workbench_instance.instance.location
 } 
 
-output "instance_machine_type" {
-  description = "The machine type of the Vertex AI Workbench instance."
-  value       = google_workbench_instance.instance.gce_setup.machine_type
-} 
-
 output "instance_state" {
   description = "The state of the Vertex AI Workbench instance."
   value       = google_workbench_instance.instance.state
 } 
 
-output "instance_self_link" {
-  description = "The URI of the created resource."
-  value       = google_workbench_instance.instance.self_link
+output "vm_image" {
+  description = "The image of the Vertex AI Workbench instance."
+  value       = google_workbench_instance.instance.upgrade_history.vm_image
 }
