@@ -39,20 +39,8 @@ resource "google_workbench_instance" "instance" {
       disk_type = var.boot_disk_type
       disk_size_gb  = var.boot_disk_size_gb
     }
-    container_image {
-     repository = var.repository
-     tag = "latest"
-   }
-    shielded_instance_config {
-      enable_integrity_monitoring = true
-      enable_secure_boot = true
-      enable_vtpm = true
-    }
-    disable_public_ip = var.disable_public_ip
-    disable_proxy_access = var.disable_proxy_access
-    instance_owners  = var.instance_owners
-    metadata {
-      idle-timeout-seconds = var.idle_timeout_seconds
-    }
   }
+  disable_public_ip = var.disable_public_ip
+  disable_proxy_access = var.disable_proxy_access
+  instance_owners  = var.instance_owners
 }
