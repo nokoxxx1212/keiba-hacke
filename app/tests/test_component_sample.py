@@ -1,6 +1,6 @@
 import unittest
 
-from src.sample import is_prime
+from src.sample.components.sample.sample import is_prime
 
 
 class TestIsPrime(unittest.TestCase):

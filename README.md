@@ -8,15 +8,15 @@ Horse Racing Forecast App
 
 ```
 $ cd app
-$ docker build -t khpythondocker .
-$ docker run -itd -v $(pwd):/opt/mnt -p 18888:8888 khpythondocker
+$ docker build -t khdocker .
+$ docker run -itd -v $(pwd):/opt/mnt -p 18888:8888 khdocker
 ```
 
 * Run Python
 
 ```
 # login container
-$ docker ps -a | grep khpythondocker
+$ docker ps -a | grep khdocker
 $ docker exec -it XXX /bin/bash
 
 # (optional)VSCode devcontainer
