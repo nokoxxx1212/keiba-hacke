@@ -1,6 +1,4 @@
-# 素数判定の関数
-import sys
-
+import argparse
 
 def is_prime(n):
     """
@@ -17,14 +15,12 @@ def is_prime(n):
             return False
     return True
 
-
 if __name__ == "__main__":
-    args = sys.argv
-    if len(args) != 2:
-        print("Usage: python sample.py <number>")
-        sys.exit()
-    n = int(args[1])
-    if is_prime(n):
-        print(f"{n} is prime")
+    parser = argparse.ArgumentParser(description='Check if a number is prime.')
+    parser.add_argument('--number', type=int, required=True, help='Number to check if it is prime.')
+    args = parser.parse_args()
+
+    if is_prime(args.number):
+        print(f"{args.number} is prime")
     else:
-        print(f"{n} is not prime")
+        print(f"{args.number} is not prime")
