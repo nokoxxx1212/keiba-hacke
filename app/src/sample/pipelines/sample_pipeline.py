@@ -1,18 +1,10 @@
 from google.cloud import aiplatform
 from kfp import dsl
 from kfp.v2 import compiler
-from kfp.v2.dsl import ContainerSpec
 from dotenv import load_dotenv
 import os
+from src.sample.components.sample.sample_component import sample_component
 
-# コンポーネントを定義
-@dsl.container_component
-def sample_component() -> ContainerSpec:
-    return ContainerSpec(
-        image='gcr.io/keiba-hacke/khsampledocker',
-        command=["python3", "sample.py", "--number", "3"],
-        # command=["ls"],
-    )
 
 # パイプラインを定義
 @dsl.pipeline(
