@@ -40,6 +40,8 @@ DOCKER_USERNAME
 ### develop Vertex AI Pipelines
 大元の khdocker コンテナは立ち上がっている前提
 
+![vap drawio](https://github.com/nokoxxx1212/keiba-hacke/assets/13251279/ffd5bf76-b12a-4022-9fd2-45c8168e3899)
+
 * ①Dockerfile作成
     * pyproject.tomlも合わせて作成
 * pyproject.toml移動: `cp ../../../../pyproject.toml ./`
@@ -54,10 +56,6 @@ DOCKER_USERNAME
 * ④pipelineファイル作成
     * envファイルも合わせて作成
 * ④pipelineファイル実行: `python sample_pipeline.py`
-* パイプライン実行
-```
-
-```
 
 ## Running the tests
 
