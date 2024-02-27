@@ -1,5 +1,5 @@
 {
-    "name": "khpythondocker",
+    "name": "khdocker",
     "dockerFile": "../Dockerfile",
     "extensions": [
         "ms-python.python",

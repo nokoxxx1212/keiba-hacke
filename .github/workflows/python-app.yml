@@ -29,9 +29,9 @@ jobs:
         file: app/Dockerfile
         platforms: linux/amd64
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/khpythondocker:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/khdocker:latest
 
     - name: Run tests
       run: |
         pwd
-        docker run --rm -v $(pwd):/opt/mnt ${{ secrets.DOCKER_USERNAME }}/khpythondocker:latest /bin/bash -c "pwd && cd /opt/mnt/app && poetry install && poetry run pytest /opt/mnt/app/src /opt/mnt/app/tests"
+        docker run --rm -v $(pwd):/opt/mnt ${{ secrets.DOCKER_USERNAME }}/khdocker:latest /bin/bash -c "pwd && cd /opt/mnt/app && poetry install && poetry run pytest /opt/mnt/app/src /opt/mnt/app/tests"

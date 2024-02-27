@@ -1,0 +1,45 @@
+{
+  "components": {
+    "comp-sample-component": {
+      "executorLabel": "exec-sample-component"
+    }
+  },
+  "deploymentSpec": {
+    "executors": {
+      "exec-sample-component": {
+        "container": {
+          "command": [
+            "python3",
+            "sample.py",
+            "--number",
+            "3"
+          ],
+          "image": "gcr.io/keiba-hacke/khsampledocker"
+        }
+      }
+    }
+  },
+  "pipelineInfo": {
+    "description": "A pipeline that runs the sample.py script.",
+    "name": "sample-pipeline"
+  },
+  "root": {
+    "dag": {
+      "tasks": {
+        "sample-component": {
+          "cachingOptions": {
+            "enableCache": true
+          },
+          "componentRef": {
+            "name": "comp-sample-component"
+          },
+          "taskInfo": {
+            "name": "sample-component"
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "2.1.0",
+  "sdkVersion": "kfp-2.6.0"
+}
