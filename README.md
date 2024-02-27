@@ -37,6 +37,28 @@ DOCKER_PASSWORD
 DOCKER_USERNAME
 ```
 
+### develop Vertex AI Pipelines
+大元の khdocker コンテナは立ち上がっている前提
+
+* ①Dockerfile作成
+    * pyproject.tomlも合わせて作成
+* pyproject.toml移動: `cp ../../../../pyproject.toml ./`
+* ①Dockerfile確認: `docker build -t khsampledocker .`
+* ②pythonスクリプト作成
+* ②pythonスクリプト確認: `docker run python3 sample.py --number 3`
+* ③componentファイル作成
+* コンテナ準備
+    * `docker build -t gcr.io/your-project-id/khsampledocker .`
+    * `gcloud auth configure-docker`
+    * `docker push gcr.io/your-project-id/your-image-name`
+* ④pipelineファイル作成
+    * envファイルも合わせて作成
+* ④pipelineファイル実行: `python sample_pipeline.py`
+* パイプライン実行
+```
+
+```
+
 ## Running the tests
 
 * Execute linter, formatter
