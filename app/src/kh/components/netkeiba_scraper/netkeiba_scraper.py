@@ -25,8 +25,8 @@ def create_netkeiba_url_potential(year_start, year_end):
     netkeiba_url_potential_df = pd.DataFrame(columns=['url', 'current_race_id', 'racecourse_i', 'place', 'race_number_i', 'year'])
     # ①競馬場ごとにループ（10競馬場）
     for year in range(year_start, year_end+1):
-        # racecourse_list=["01","02","03","04","05","06","07","08","09","10"]
-        racecourse_list=["01"]
+        racecourse_list=["01","02","03","04","05","06","07","08","09","10"]
+        # racecourse_list=["01"]
         for racecourse_i in range(len(racecourse_list)):
             place = ""
             if racecourse_list[racecourse_i] == "01":
