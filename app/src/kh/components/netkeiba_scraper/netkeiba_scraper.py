@@ -287,6 +287,7 @@ def scrape_netkeiba_data(netkeiba_url_unique_df):
             date=str(soup_smalltxt).split(">")[1].split(" ")[0]
             clas=str(soup_smalltxt).split(">")[1].split(" ")[2].replace(u'\xa0', u' ').split(" ")[0]
             title=str(soup.find_all("h1")[1]).split(">")[1].split("<")[0]
+            update_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     
             race_data = [
                 current_race_id,
@@ -314,7 +315,8 @@ def scrape_netkeiba_data(netkeiba_url_unique_df):
                 con,#馬場状態
                 wed,#天気
                 racecourse_i,#場
-                place]
+                place,
+                update_at]
             # Append the list to the race_data_all
             race_data_all.append(race_data)
 
