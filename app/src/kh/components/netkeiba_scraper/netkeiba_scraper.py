@@ -8,6 +8,7 @@ from google.cloud import storage
 import pandas_gbq
 from google.cloud import bigquery
 from google.cloud.exceptions import NotFound
+from datetime import datetime
 
 def create_netkeiba_url_potential(year_start, year_end):
     """
@@ -185,7 +186,8 @@ def scrape_netkeiba_data(netkeiba_url_unique_df):
     # Initialize a list to store the responses
     race_data_all = []
     #取得するデータのヘッダー情報を先に追加しておく
-    race_data_all.append(['race_id','馬','騎手','馬番','走破時間','オッズ','通過順','着順','体重','体重変化','性','齢','斤量','上がり','人気','レース名','日付','開催','クラス','芝orダート','距離','回り','馬場','天気','場id','場名'])
+    # race_data_all.append(['race_id','馬','騎手','馬番','走破時間','オッズ','通過順','着順','体重','体重変化','性','齢','斤量','上がり','人気','レース名','日付','開催','クラス','芝orダート','距離','回り','馬場','天気','場id','場名', 'update_at'])
+    race_data_all.append(['race_id', 'horse', 'jockey', 'horse_number', 'run_time', 'odds', 'pass_order', 'rank', 'weight', 'weight_change', 'gender', 'age', 'load', 'rise', 'popularity', 'race_name', 'date', 'event', 'class', 'turf_or_dirt', 'distance', 'lap', 'racecourse', 'weather', 'place_id', 'place_name', 'update_at'])
 
     # Loop over each row in the DataFrame
     for _, row in netkeiba_url_unique_df.iterrows():

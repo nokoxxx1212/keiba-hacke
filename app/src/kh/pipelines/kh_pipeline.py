@@ -25,6 +25,7 @@ def run_pipeline(project: str, location: str, pipeline_root: str):
         display_name='kh-pipeline',
         template_path='kh_pipeline_job.json',
         pipeline_root=pipeline_root,
+        enable_caching=False
     )
     job.run()
 
