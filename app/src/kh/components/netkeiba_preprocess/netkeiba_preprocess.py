@@ -36,7 +36,7 @@ def get_data_from_bigquery(project_id, table_name, update_time_threshold):
         pandas.DataFrame: The data retrieved from BigQuery.
 
     """
-    client = bigquery.Client()
+    client = bigquery.Client(project=project_id)
 
     # SQL query
     query = f"""
