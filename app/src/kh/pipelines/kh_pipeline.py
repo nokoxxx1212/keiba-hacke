@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 from src.kh.components.netkeiba_scraper.netkeiba_scraper_component import netkeiba_scraper_component
 from src.kh.components.netkeiba_preprocess.netkeiba_preprocess_component import netkeiba_preprocess_component
+from src.kh.components.train_lgb.train_lgb_component import train_lgb_component
 
 
 # パイプラインを定義
@@ -16,7 +17,9 @@ def kh_pipeline():
     # コンポーネントのインスタンスを作成
     netkeiba_scraper_task = netkeiba_scraper_component()
     netkeiba_preprocess_task = netkeiba_preprocess_component()
+    train_lgb_task = train_lgb_component()
     netkeiba_preprocess_task.after(netkeiba_scraper_task)
+    train_lgb_task.after(netkeiba_preprocess_task)
 
 # パイプラインを実行
 def run_pipeline(project: str, location: str, pipeline_root: str):

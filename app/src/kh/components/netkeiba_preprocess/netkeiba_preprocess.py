@@ -56,25 +56,18 @@ def get_data_from_bigquery(project_id, table_name, update_time_threshold):
     return df
 
 def preprocess(df):
+    """
+    Preprocesses the given DataFrame for horse racing data.
+
+    Args:
+        df (pd.DataFrame): The input DataFrame containing horse racing data.
+
+    Returns:
+        pd.DataFrame: The preprocessed DataFrame.
+    """
+
     # 基準とする年度
     yearStart = 2010
-    #for for_year in yearList:
-    #    var_path = "data/" + str(for_year) + "_new.csv"
-    #    var_data = pd.read_csv(
-    #        var_path,
-    #        encoding="SHIFT-JIS",
-    #        header=0,
-    #        parse_dates=['日付'], 
-    #        date_parser=lambda x: pd.to_datetime(x, format='%Y年%m月%d日')
-    #    )
-    #    # '着順'カラムの値を数値に変換しようとして、エラーが発生する場合はNaNにする
-    #    var_data['着順'] = pd.to_numeric(var_data['着順'], errors='coerce')
-    #    # NaNの行を削除する
-    #    var_data = var_data.dropna(subset=['着順'])
-    #    # 必要であれば、'着順'カラムのデータ型を整数に変換する
-    #    var_data['着順'] = var_data['着順'].astype(int)
-    
-    #    df.append(var_data)
     # DataFrameの結合
     df_combined = df
 
@@ -241,10 +234,9 @@ def preprocess(df):
     df_combined['day'] = df_combined['date5'].dt.day
     df_combined['date5'] = (df_combined['year'] - yearStart) * 365 + df_combined['month'] * 30 + df_combined['day']
     
-    # 不要となった 'year', 'month', 'day' カラムを削除
-    df_combined.drop(['year', 'month', 'day'], axis=1, inplace=True)
-    print("日付変換：終了")
-    
+    # yearを更新
+    df_combined['year'] = df_combined['race_id'].str[:4].astype(int)
+
     categorical_features = ['horse', 'jockey', 'race_name', 'event', 'place_name', 'jockey1', 'jockey2', 'jockey3', 'jockey4', 'jockey5']  # カテゴリカル変数の列名を指定してください
     
     # ラベルエンコーディング
