@@ -1,0 +1,105 @@
+{
+  "components": {
+    "comp-netkeiba-preprocess-component": {
+      "executorLabel": "exec-netkeiba-preprocess-component"
+    },
+    "comp-netkeiba-scraper-component": {
+      "executorLabel": "exec-netkeiba-scraper-component"
+    },
+    "comp-train-lgb-component": {
+      "executorLabel": "exec-train-lgb-component"
+    }
+  },
+  "deploymentSpec": {
+    "executors": {
+      "exec-netkeiba-preprocess-component": {
+        "container": {
+          "command": [
+            "python3",
+            "netkeiba_preprocess.py",
+            "--update_time_threshold",
+            "2024-03-10 00:00:00"
+          ],
+          "image": "gcr.io/keiba-hacke/khnetkeiba_preprocessdocker"
+        }
+      },
+      "exec-netkeiba-scraper-component": {
+        "container": {
+          "command": [
+            "python3",
+            "netkeiba_scraper.py",
+            "--year_start",
+            "2024",
+            "--year_end",
+            "2024"
+          ],
+          "image": "gcr.io/keiba-hacke/khnetkeiba_scraperdocker"
+        }
+      },
+      "exec-train-lgb-component": {
+        "container": {
+          "command": [
+            "python3",
+            "train_lgb.py",
+            "--year_start",
+            "2024",
+            "--year_end",
+            "2024"
+          ],
+          "image": "gcr.io/keiba-hacke/khtrain_lgbdocker"
+        }
+      }
+    }
+  },
+  "pipelineInfo": {
+    "description": "A pipeline that runs the kh script.",
+    "name": "kh-pipeline"
+  },
+  "root": {
+    "dag": {
+      "tasks": {
+        "netkeiba-preprocess-component": {
+          "cachingOptions": {
+            "enableCache": true
+          },
+          "componentRef": {
+            "name": "comp-netkeiba-preprocess-component"
+          },
+          "dependentTasks": [
+            "netkeiba-scraper-component"
+          ],
+          "taskInfo": {
+            "name": "netkeiba-preprocess-component"
+          }
+        },
+        "netkeiba-scraper-component": {
+          "cachingOptions": {
+            "enableCache": true
+          },
+          "componentRef": {
+            "name": "comp-netkeiba-scraper-component"
+          },
+          "taskInfo": {
+            "name": "netkeiba-scraper-component"
+          }
+        },
+        "train-lgb-component": {
+          "cachingOptions": {
+            "enableCache": true
+          },
+          "componentRef": {
+            "name": "comp-train-lgb-component"
+          },
+          "dependentTasks": [
+            "netkeiba-preprocess-component"
+          ],
+          "taskInfo": {
+            "name": "train-lgb-component"
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "2.1.0",
+  "sdkVersion": "kfp-2.6.0"
+}

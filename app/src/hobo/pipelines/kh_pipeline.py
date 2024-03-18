@@ -3,7 +3,9 @@ from kfp import dsl
 from kfp.v2 import compiler
 from dotenv import load_dotenv
 import os
-from src.kh.components.netkeiba_scraper.netkeiba_scraper_component import netkeiba_scraper_component
+from src.hobo.components.netkeiba_scraper.netkeiba_scraper_component import netkeiba_scraper_component
+from src.hobo.components.netkeiba_preprocess.netkeiba_preprocess_component import netkeiba_preprocess_component
+from src.hobo.components.train_lgb.train_lgb_component import train_lgb_component
 
 
 # パイプラインを定義
@@ -14,6 +16,10 @@ from src.kh.components.netkeiba_scraper.netkeiba_scraper_component import netkei
 def kh_pipeline():
     # コンポーネントのインスタンスを作成
     netkeiba_scraper_task = netkeiba_scraper_component()
+    netkeiba_preprocess_task = netkeiba_preprocess_component()
+    train_lgb_task = train_lgb_component()
+    netkeiba_preprocess_task.after(netkeiba_scraper_task)
+    train_lgb_task.after(netkeiba_preprocess_task)
 
 # パイプラインを実行
 def run_pipeline(project: str, location: str, pipeline_root: str):
@@ -25,8 +31,9 @@ def run_pipeline(project: str, location: str, pipeline_root: str):
         display_name='kh-pipeline',
         template_path='kh_pipeline_job.json',
         pipeline_root=pipeline_root,
+        enable_caching=False
     )
-    job.run()
+    job.run(service_account="exec-vap@keiba-hacke.iam.gserviceaccount.com")
 
 if __name__ == '__main__':
     # パイプラインを実行するためのパラメータ
