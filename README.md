@@ -3,6 +3,18 @@
 Horse Racing Forecast App
 
 ## Getting Started
+### 一馬入魂（ichiba）
+#### 推論
+* GCSバケット作成・データアップロード
+
+```
+gsutil cp -r pickle_data gs://${GCS_BUCKET}/ichiba/pickle_data
+gsutil cp -r race_result_place gs://${GCS_BUCKET}/ichiba/race_result_place
+gsutil cp -r train_data gs://${GCS_BUCKET}/ichiba/train_data
+```
+
+* 権限付与
+
 ### hobo パイプライン開発・実行
 #### 大元の開発コンテナ起動・ログイン
 * ここからパイプラインを実行することになる

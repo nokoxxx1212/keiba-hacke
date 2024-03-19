@@ -41,5 +41,16 @@ python-dotenv = "^1.0.1"
 pandas-gbq = "^0.21.0"
 requests = "^2.31.0"
 
+[tool.poetry.group.ichiba]
+optional = true
+[tool.poetry.group.ichiba.dependencies]
+pandas
+datetime
+requests
+bs4
+numpy
+scikit-learn
+lxml
+
 [tool.pytest.ini_options]
 testpaths = ["tests",]
