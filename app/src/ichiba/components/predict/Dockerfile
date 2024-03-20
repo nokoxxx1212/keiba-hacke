@@ -1,4 +1,10 @@
+# Google Cloud SDKのインストール
+FROM google/cloud-sdk:latest as gcloud
 FROM python:3.11
+
+# Google Cloud SDKのコピー
+COPY --from=gcloud /usr/lib/google-cloud-sdk /usr/lib/google-cloud-sdk
+ENV PATH $PATH:/usr/lib/google-cloud-sdk/bin
 
 ARG GCS_BUCKET
 ARG GCP_SA_KEY
