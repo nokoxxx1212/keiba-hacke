@@ -13,6 +13,9 @@ from datetime import timedelta
 import argparse
 import os
 
+def sample_data(race_id):
+    return "OK!!" + race_id
+
 def read_html(url,n):
     r = requests.get(url)
     c = r.content
@@ -1203,9 +1206,9 @@ def search_jockey_data(jockey_name,race_type):
 if __name__ == "__main__":
     # Parse the arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('--race_id', type=int, required=True, help='race_id.')
+    parser.add_argument('--race_id', type=str, required=True, help='race_id.')
     args = parser.parse_args()
-    race_id = str(args.race_id)
+    race_id = args.race_id
 
     year = str(datetime.datetime.now().year)
     month = str(datetime.datetime.now().month)

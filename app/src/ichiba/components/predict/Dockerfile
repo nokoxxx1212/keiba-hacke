@@ -27,3 +27,6 @@ RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/train_data /opt/mnt/train_data
 
 # expose port
 EXPOSE 8888
+
+# run uvicorn command when the container starts
+CMD ["uvicorn", "my_fastapi:app", "--reload"]

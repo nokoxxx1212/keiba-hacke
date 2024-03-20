@@ -1,46 +1,40 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
+import predict_race 
+from typing import Any, Dict, List
+import datetime
 
 app = FastAPI()
 
 # リクエストデータの構造を定義
 class RequestData(BaseModel):
-    example_field: str
+    race_id: str
 
 # レスポンスデータの構造を定義
 class ResponseData(BaseModel):
-    prediction: float
+    prediction: List[Dict[str, Any]]
 
 @app.post("/predict", response_model=ResponseData)
 async def predict(request_data: RequestData):
-    # リクエストデータを取得
-    data = request_data.example_field
+    race_id = request_data.race_id
 
-    # データの前処理（ダミー）
-    processed_data = preprocess(data)
+    year = str(datetime.datetime.now().year)
+    month = str(datetime.datetime.now().month)
+    date = str(datetime.datetime.now().day)
+    dt_now = year+"年"+month+"月"+date+"日"
 
-    # モデルによる推論（ダミー）
-    prediction = model_predict(processed_data)
+    place_dict = {1:"札幌",2:"函館",3:"福島",4:"新潟",5:"東京",6:"中山",7:"中京",8:"京都",9:"阪神",10:"小倉"}
+    place = int(race_id[4:6])
 
-    # 推論結果の後処理（ダミー）
-    response_data = postprocess(prediction)
+    print("start preprocess")
+    predict_data, horse_name, jockey_name = predict_race.predict([race_id],[dt_now])
+    print("start predict")
+    df = predict_race.predict_send(predict_data,horse_name,place_dict,[race_id],place,jockey_name,[dt_now])
+    df = predict_race.Make_DataBase(df)
+    print(df)
 
-    return response_data
-
-def preprocess(data):
-    # ここでデータの前処理を行う
-    return data
-
-def model_predict(data):
-    # ここでモデルを使用して推論を行う
-    # この例では、ダミーの推論結果を返す
-    return 0.5
-
-def postprocess(prediction):
-    # ここで推論結果の後処理を行う
-    # この例では、レスポンスデータの形式に合わせて結果を返す
-    return {"prediction": prediction}
+    return {"prediction": df.to_dict('records')}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
