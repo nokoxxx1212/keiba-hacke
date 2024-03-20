@@ -3,8 +3,6 @@ FROM python:3.11
 ARG GCS_BUCKET
 ARG GCP_SA_KEY
 ENV GOOGLE_APPLICATION_CREDENTIALS=/tmp/key.json
-RUN echo $GCP_SA_KEY | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
-RUN gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
 
 # install python package
 COPY pyproject.toml ./
@@ -25,6 +23,10 @@ WORKDIR /opt/mnt
 # COPY . /opt/mnt
 
 # download data from gcs
+# 認証情報を設定
+RUN echo $GCP_SA_KEY | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
+RUN gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+
 RUN echo ${GCS_BUCKET}
 RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/pickle_data /opt/mnt/pickle_data
 RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/race_result_place /opt/mnt/race_result_place
