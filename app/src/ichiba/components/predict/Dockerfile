@@ -1,6 +1,9 @@
 FROM python:3.11
 
 ARG GCS_BUCKET
+ARG GCR_JSON_KEY
+ENV GOOGLE_APPLICATION_CREDENTIALS=/tmp/key.json
+RUN echo $GCR_JSON_KEY | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
 
 # install python package
 COPY pyproject.toml ./
