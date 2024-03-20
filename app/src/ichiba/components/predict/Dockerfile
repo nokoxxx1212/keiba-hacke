@@ -21,6 +21,7 @@ WORKDIR /opt/mnt
 # COPY . /opt/mnt
 
 # download data from gcs
+RUN echo ${GCS_BUCKET}
 RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/pickle_data /opt/mnt/pickle_data
 RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/race_result_place /opt/mnt/race_result_place
 RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/train_data /opt/mnt/train_data
