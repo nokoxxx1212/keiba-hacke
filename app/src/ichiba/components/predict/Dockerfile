@@ -34,9 +34,9 @@ RUN echo $GCP_SA_KEY | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
 RUN gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
 
 RUN echo ${GCS_BUCKET}
-RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/pickle_data /opt/mnt/pickle_data
-RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/race_result_place /opt/mnt/race_result_place
-RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/train_data /opt/mnt/train_data
+RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/pickle_data /opt/mnt/
+RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/race_result_place /opt/mnt/
+RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/train_data /opt/mnt/
 
 # expose port
 EXPOSE 8888
