@@ -34,3 +34,5 @@ jobs:
         dockerfile: app/src/ichiba/components/predict/Dockerfile  # Dockerfileのパスを指定します
         push: true
         tags: asia-northeast1-docker.pkg.dev/keiba-hacke/ichiba:latest  # プロジェクトID、リポジトリ名、タグに応じて変更してください
+        build-args: |
+          GCS_BUCKET=dev-kh-gcs-bucket
