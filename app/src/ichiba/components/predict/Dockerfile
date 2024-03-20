@@ -4,6 +4,7 @@ ARG GCS_BUCKET
 ARG GCP_SA_KEY
 ENV GOOGLE_APPLICATION_CREDENTIALS=/tmp/key.json
 RUN echo $GCP_SA_KEY | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
+RUN gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
 
 # install python package
 COPY pyproject.toml ./
