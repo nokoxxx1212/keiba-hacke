@@ -36,4 +36,4 @@ jobs:
         tags: asia-northeast1-docker.pkg.dev/keiba-hacke/ichiba:latest  # プロジェクトID、リポジトリ名、タグに応じて変更してください
         build-args: |
           GCS_BUCKET=dev-kh-gcs-bucket
-          GCR_JSON_KEY=${{ secrets.GCR_JSON_KEY }}
+          GCP_SA_KEY=${{ secrets.GCP_SA_KEY }}
