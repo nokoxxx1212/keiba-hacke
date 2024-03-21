@@ -26,7 +26,7 @@ RUN mkdir -p /opt/mnt
 WORKDIR /opt/mnt
 
 # copy all files into container
-# COPY . /opt/mnt
+COPY . /opt/mnt
 
 # download data from gcs
 # 認証情報を設定
@@ -40,6 +40,8 @@ RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/train_data /opt/mnt/
 
 # expose port
 EXPOSE 8888
+
+WORKDIR /opt/mnt/App_ponyo
 
 # run uvicorn command when the container starts
 CMD ["uvicorn", "my_fastapi:app", "--reload"]
