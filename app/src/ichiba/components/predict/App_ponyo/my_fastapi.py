@@ -12,6 +12,10 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+
 # リクエストデータの構造を定義
 class RequestData(BaseModel):
     race_id: str
@@ -42,4 +46,4 @@ async def predict(request_data: RequestData):
     return {"prediction": df.to_dict('records')}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
