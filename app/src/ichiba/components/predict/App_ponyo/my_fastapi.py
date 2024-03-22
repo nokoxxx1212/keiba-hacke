@@ -7,6 +7,11 @@ import datetime
 
 app = FastAPI()
 
+# ヘルスチェック用のエンドポイント
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 # リクエストデータの構造を定義
 class RequestData(BaseModel):
     race_id: str
