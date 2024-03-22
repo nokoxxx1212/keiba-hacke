@@ -39,9 +39,9 @@ RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/race_result_place /opt/mnt/
 RUN gsutil cp -r gs://${GCS_BUCKET}/ichiba/train_data /opt/mnt/
 
 # expose port
-EXPOSE 8888
+EXPOSE 8080
 
 WORKDIR /opt/mnt/App_ponyo
 
 # run uvicorn command when the container starts
-CMD ["uvicorn", "my_fastapi:app", "--reload"]
+CMD ["uvicorn", "my_fastapi:app", "--host", "0.0.0.0", "--port", "8080", "--reload"]
