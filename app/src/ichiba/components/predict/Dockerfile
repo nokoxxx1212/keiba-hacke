@@ -13,6 +13,7 @@ ENV GOOGLE_APPLICATION_CREDENTIALS=/tmp/key.json
 # install python package
 COPY pyproject.toml ./
 RUN pip install poetry
+RUN pip install python-multipart
 RUN poetry config virtualenvs.create false \
     && poetry install --no-root --with test,lint,ichiba
 
