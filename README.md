@@ -5,7 +5,9 @@ Horse Racing Forecast App
 ## Getting Started
 ### 一馬入魂（ichiba）
 #### 推論
-* GCSバケット作成・データアップロード
+* 事前準備
+    * GCSバケット作成・データアップロード
+        * 特に、学習のたびにtrain_dataが変わる
 
 ```
 gsutil cp -r pickle_data gs://${GCS_BUCKET}/ichiba/pickle_data
@@ -14,6 +16,25 @@ gsutil cp -r train_data gs://${GCS_BUCKET}/ichiba/train_data
 ```
 
 * 権限付与
+* コンテナビルド
+    * CIで自動でビルド
+* Cloud Runデプロイ
+
+```
+$ gcloud run deploy ichiba --image asia-northeast1-docker.pkg.dev/PROJECT/ichiba/ichibadocker:latest --platform managed --project PROJECT --region asia-northeast1
+```
+
+* CLIアクセス
+
+```
+$ curl -X POST "https://ichiba-XXX.run.app:8080/predict" -H "Content-Type: application/json" -d "{"race_id": "202406020211"}"
+```
+
+* 画面アクセス
+
+```
+https://ichiba-XXX.run.app/form
+```
 
 ### hobo パイプライン開発・実行
 #### 大元の開発コンテナ起動・ログイン

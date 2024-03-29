@@ -7,7 +7,7 @@ def add(x, y):
 
 @task
 def multiply(x, y):
-    time.sleep(500)
+    #time.sleep(500)
     return x * y
 
 @flow

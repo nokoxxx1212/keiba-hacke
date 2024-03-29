@@ -13,6 +13,7 @@ ENV PATH $PATH:/usr/lib/google-cloud-sdk/bin
 # install python package
 COPY pyproject.toml ./
 RUN pip install poetry
+RUN pip install papermill
 RUN poetry config virtualenvs.create false \
     && poetry install --no-root --with test,lint,ichiba
 
