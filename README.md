@@ -7,6 +7,7 @@ Horse Racing Forecast App
 #### 推論
 * 事前準備
     * GCSバケット作成・データアップロード
+        * 特に、学習のたびにtrain_dataが変わる
 
 ```
 gsutil cp -r pickle_data gs://${GCS_BUCKET}/ichiba/pickle_data
