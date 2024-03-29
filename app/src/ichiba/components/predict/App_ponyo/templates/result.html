@@ -4,7 +4,22 @@
 
 <h2>Prediction Result</h2>
 
-<p>{{ prediction }}</p>
+<table>
+  <tr>
+    <!-- ヘッダーを作成します -->
+    {% for key in prediction[0].keys() %}
+      <th>{{ key }}</th>
+    {% endfor %}
+  </tr>
+  <!-- データ行を作成します -->
+  {% for row in prediction %}
+    <tr>
+      {% for cell in row.values() %}
+        <td>{{ cell }}</td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
 
 </body>
 </html>
