@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#loading {
+  display: none;
+}
+</style>
+<script>
+function showLoading() {
+  document.getElementById('loading').style.display = 'block';
+}
+</script>
+</head>
+<body>
+
+<h2>🐎一馬入魂💰</h2>
+<h3>Race ID Form</h3>
+
+<form action="/result" method="post" onsubmit="showLoading()">
+  <label for="race_id">Race ID:</label><br>
+  <input type="text" id="race_id" name="race_id" value=""><br>
+  <input type="submit" value="Submit">
+</form> 
+<a href="https://race.netkeiba.com/top/">race.netkeiba.com</a>からレースIDを取得して下さい<br>
+ex: 202406020211<br>
+注:推論処理は30秒くらいかかります<br>
+
+<div id="loading">
+  <img src="/static/loading.gif" alt="Loading..." width="50" height="50" />
+</div>
+
+</body>
+</html>
