@@ -7,8 +7,10 @@ import predict_race
 from typing import Any, Dict, List
 import datetime
 import pandas as pd
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # ヘルスチェック用のエンドポイント
